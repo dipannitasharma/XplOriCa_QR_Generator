@@ -7,7 +7,7 @@ import DownloadButton from "./components/DownloadButton";
 export default function App() {
 
   const [text, setText] = useState("");
-  const [size, setSize] = useState(250);
+  const [size, setSize] = useState(300);
   const [format, setFormat] = useState("png");
 
   const qrRef = useRef(null);
