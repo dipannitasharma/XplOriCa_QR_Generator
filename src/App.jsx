@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-
 import InputForm from "./components/InputForm";
 import QRPreview from "./components/QRPreview";
 import DownloadButton from "./components/DownloadButton";

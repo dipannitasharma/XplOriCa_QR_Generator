@@ -5,11 +5,13 @@ export default function InputForm({
   setSize,
   format,
   setFormat,
+  fileName,
+  setFileName,
 }) {
   return (
     <div className="space-y-4">
 
-      {/* Text Input */}
+      {/* Text */}
       <div>
         <label className="text-sm text-zinc-400">
           Enter Text / Link
@@ -20,11 +22,11 @@ export default function InputForm({
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="https://xplorica.in"
-          className="w-full mt-1 px-3 py-2 rounded bg-zinc-800 border border-zinc-700 focus:outline-none focus:border-blue-500"
+          className="w-full mt-1 px-3 py-2 rounded bg-zinc-800 border border-zinc-700"
         />
       </div>
 
-      {/* Size Input */}
+      {/* Size */}
       <div>
         <label className="text-sm text-zinc-400">
           QR Size (px)
@@ -40,7 +42,7 @@ export default function InputForm({
         />
       </div>
 
-      {/* Format Select */}
+      {/* Format */}
       <div>
         <label className="text-sm text-zinc-400">
           Download Format
@@ -54,6 +56,21 @@ export default function InputForm({
           <option value="png">PNG</option>
           <option value="jpg">JPG</option>
         </select>
+      </div>
+
+      {/* File Name */}
+      <div>
+        <label className="text-sm text-zinc-400">
+          File Name
+        </label>
+
+        <input
+          type="text"
+          value={fileName}
+          onChange={(e) => setFileName(e.target.value)}
+          placeholder="hacktonix-community"
+          className="w-full mt-1 px-3 py-2 rounded bg-zinc-800 border border-zinc-700"
+        />
       </div>
 
     </div>
