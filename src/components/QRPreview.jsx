@@ -1,5 +1,5 @@
 import { QRCodeCanvas } from "qrcode.react";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.jpg";
 
 export default function QRPreview({ text, size, qrRef }) {
   if (!text) return null;
