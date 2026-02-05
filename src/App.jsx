@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+
 import InputForm from "./components/InputForm";
 import QRPreview from "./components/QRPreview";
 import DownloadButton from "./components/DownloadButton";
@@ -9,7 +10,6 @@ export default function App() {
   const [size, setSize] = useState(300);
   const [format, setFormat] = useState("png");
   const [fileName, setFileName] = useState("");
-
 
   const qrRef = useRef(null);
 
@@ -24,17 +24,16 @@ export default function App() {
         </h1>
 
         {/* Inputs */}
-          <InputForm
-        text={text}
-        setText={sSetText}
-        size={size}
-        setSize={setSize}
-        format={format}
-        setFormat={setFormat}
-        fileName={fileName}
-        setFileName={setFileName}
-      />
-
+        <InputForm
+          text={text}
+          setText={setText}        // ✅ FIXED
+          size={size}
+          setSize={setSize}
+          format={format}
+          setFormat={setFormat}
+          fileName={fileName}
+          setFileName={setFileName}
+        />
 
         {/* Preview */}
         <QRPreview
@@ -47,6 +46,7 @@ export default function App() {
         <DownloadButton
           qrRef={qrRef}
           format={format}
+          fileName={fileName}      // ✅ ADDED
           disabled={!text}
         />
 
