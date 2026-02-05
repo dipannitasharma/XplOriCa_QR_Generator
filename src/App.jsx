@@ -8,6 +8,8 @@ export default function App() {
   const [text, setText] = useState("");
   const [size, setSize] = useState(300);
   const [format, setFormat] = useState("png");
+  const [fileName, setFileName] = useState("");
+
 
   const qrRef = useRef(null);
 
@@ -22,14 +24,17 @@ export default function App() {
         </h1>
 
         {/* Inputs */}
-        <InputForm
-          text={text}
-          setText={setText}
-          size={size}
-          setSize={setSize}
-          format={format}
-          setFormat={setFormat}
-        />
+          <InputForm
+        text={text}
+        setText={sSetText}
+        size={size}
+        setSize={setSize}
+        format={format}
+        setFormat={setFormat}
+        fileName={fileName}
+        setFileName={setFileName}
+      />
+
 
         {/* Preview */}
         <QRPreview
