@@ -7,7 +7,7 @@ import DownloadButton from "./components/DownloadButton";
 export default function App() {
 
   const [text, setText] = useState("");
-  const [size, setSize] = useState(250);
+  const [size, setSize] = useState(220);
   const [format, setFormat] = useState("png");
 
   const [fileName, setFileName] = useState("");
