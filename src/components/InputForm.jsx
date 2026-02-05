@@ -61,7 +61,7 @@ export default function InputForm({
       {/* File Name */}
       <div>
         <label className="text-sm text-zinc-400">
-          File Name
+          Custom File Name
         </label>
 
         <input
