@@ -4,15 +4,17 @@ import logo from "../assets/logo.jpg";
 export default function QRPreview({ text, size, qrRef }) {
   if (!text) return null;
 
+  const padding = 16; // px (p-4 = 16px)
+
   return (
     <div className="flex justify-center my-6">
 
       <div
         ref={qrRef}
-        className="relative bg-white p-2 rounded"
+        className="relative bg-white rounded p-4"
         style={{
-          width: size,
-          height: size,
+          width: size + padding * 2,
+          height: size + padding * 2,
         }}
       >
         <QRCodeCanvas
@@ -39,3 +41,5 @@ export default function QRPreview({ text, size, qrRef }) {
     </div>
   );
 }
+
+
