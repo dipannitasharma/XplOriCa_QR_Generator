@@ -1,6 +1,20 @@
 import * as htmlToImage from "html-to-image";
 
-export default function DownloadButton({ qrRef, format, disabled }) {
+export default function DownloadButton({
+  qrRef,
+  format,
+  disabled,
+  fileName,
+  onAfterDownload,
+}) {
+
+  // Clean file name
+  const sanitizeName = (name) => {
+    return name
+      .trim()
+      .replace(/[^a-z0-9-_]/gi, "_")
+      .toLowerCase();
+  };
 
   const handleDownload = async () => {
     if (!qrRef.current) return;
@@ -15,10 +29,18 @@ export default function DownloadButton({ qrRef, format, disabled }) {
       });
     }
 
+    const safeName = fileName
+      ? sanitizeName(fileName)
+      : "xplorica-qr";
+
+    const finalName = `${safeName}.${format}`;
+
     const link = document.createElement("a");
     link.href = dataUrl;
-    link.download = `xplorica-qr.${format}`;
+    link.download = finalName;
     link.click();
+
+    onAfterDownload();
   };
 
   return (
