@@ -5,7 +5,7 @@ export default function DownloadButton({
   format,
   disabled,
   fileName,
-  onAfterDownload,
+
 }) {
 
   // Clean file name
@@ -17,31 +17,30 @@ export default function DownloadButton({
   };
 
   const handleDownload = async () => {
-    if (!qrRef.current) return;
+  if (!qrRef.current) return;
 
-    let dataUrl;
+  let dataUrl;
 
-    if (format === "png") {
-      dataUrl = await htmlToImage.toPng(qrRef.current);
-    } else {
-      dataUrl = await htmlToImage.toJpeg(qrRef.current, {
-        quality: 0.95,
-      });
-    }
+  if (format === "png") {
+    dataUrl = await htmlToImage.toPng(qrRef.current);
+  } else {
+    dataUrl = await htmlToImage.toJpeg(qrRef.current, {
+      quality: 0.95,
+    });
+  }
 
-    const safeName = fileName
-      ? sanitizeName(fileName)
-      : "xplorica-qr";
+  const safeName = fileName
+    ? sanitizeName(fileName)
+    : "xplorica-qr";
 
-    const finalName = `${safeName}.${format}`;
+  const finalName = `${safeName}.${format}`;
 
-    const link = document.createElement("a");
-    link.href = dataUrl;
-    link.download = finalName;
-    link.click();
+  const link = document.createElement("a");
+  link.href = dataUrl;
+  link.download = finalName;
+  link.click();
+};
 
-    onAfterDownload();
-  };
 
   return (
     <button
@@ -50,7 +49,7 @@ export default function DownloadButton({
       className="
         w-full bg-blue-600 hover:bg-blue-700
         disabled:bg-zinc-700
-        py-2 rounded font-semibold transition
+        py-2 rounded font-semibold transition mt-5
       "
     >
       Download QR

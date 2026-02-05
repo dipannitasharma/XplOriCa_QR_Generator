@@ -7,6 +7,7 @@ export default function InputForm({
   setFormat,
   fileName,
   setFileName,
+  setIsFileNameManual,
 }) {
   return (
     <div className="space-y-4">
@@ -20,7 +21,12 @@ export default function InputForm({
         <input
           type="text"
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) => {
+            setText(e.target.value);
+
+            // Allow auto name again
+            setIsFileNameManual(false);
+          }}
           placeholder="https://xplorica.in"
           className="w-full mt-1 px-3 py-2 rounded bg-zinc-800 border border-zinc-700"
         />
@@ -67,8 +73,19 @@ export default function InputForm({
         <input
           type="text"
           value={fileName}
-          onChange={(e) => setFileName(e.target.value)}
-          placeholder="hacktonix-community"
+         onChange={(e) => {
+            const value = e.target.value;
+
+            setText(value);
+
+            // Reset only when empty
+            if (!value) {
+                setIsFileNameManual(false);
+                setFileName("");
+            }
+            }}
+
+          placeholder="e.g-xplorica-qr"
           className="w-full mt-1 px-3 py-2 rounded bg-zinc-800 border border-zinc-700"
         />
       </div>
